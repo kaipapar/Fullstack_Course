@@ -1,10 +1,12 @@
-#osa1 #react #javascript #vite @today
+#osa1 #react #javascript #vite [[2023-09-08]]
 ###### Vite
 [React perusteita](https://react.dev/learn/your-first-component)
 - React sovellukset koostuu komponenteista
 - komponentit kirjoitetaan HTML:muodossa.
 - komponentit on hyödyllisiä, sillä niitä pystyy uusiokäyttämään helposti, toisin kuin puhdasta HTML:llää, joka on rasittavaa kirjoittaa.
-[!info]Ilmeisesti komponenttien sisällä ei ole HTML:llää vaan [JSX:iä](https://react.dev/learn/writing-markup-with-jsx)
+>[!tip]Ilmeisesti komponenttien sisällä ei ole HTML:llää vaan [JSX:iä](https://react.dev/learn/writing-markup-with-jsx)
+>
+
 - #JSX on kuin HTML mutta hakasulkeiden sisälle voi asettaa JS koodia.
 >**react komponentti on JS funktio, jota voi maustaa markupilla/HTML:llä**
 - komponentit voidaan merkata vietäväksi `export default` komennolla, joka tulee suoraa JavaScriptistä. 

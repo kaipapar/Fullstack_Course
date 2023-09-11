@@ -11,8 +11,12 @@
             "id": "0c9e51bb7fa29149",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "1/b JavaScriptiä.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "1/b JavaScriptiä.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "1/b JavaScriptiä.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,15 +124,16 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "1/b JavaScriptiä.md"
+              }
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -140,6 +147,8 @@
   },
   "active": "0c9e51bb7fa29149",
   "lastOpenFiles": [
+    "().md",
+    "1/b JavaScriptiä.md",
     "1/a Reactin alkeet.md",
     "0/CSS basics.md",
     "0/HTML lomakkeet.md",
