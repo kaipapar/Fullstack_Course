@@ -145,3 +145,9 @@ const vastaus = average(2, 5)
 ```
 
 - en ole vakuuttunut mistään mitä tuossa sanotaan.
+
+##### Olioiden metodit
+- näitä asioita ei käytetä kurssin aikana, mutta saattavat muuten olla hyödyllisiä.
+- [Linkki](https://fullstackopen.com/osa1/java_scriptia#olioiden-metodit-ja-this)
+- Oliota referoidaan `this` avainsanalla samalla tavalla kuin pythonissa käytetään `self` avainsanaa
+-

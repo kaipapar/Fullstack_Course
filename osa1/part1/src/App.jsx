@@ -16,11 +16,16 @@ function App() {
     <p>Hello world</p>
   </div> )
 }*/
-const Hello = (props) => {
-  console.log(props)
+const Hello = ({name, age}) => {
+  const bornYear = () => {
+    const yearNow = new Date().getFullYear()
+    return yearNow- age
+  }
+  console.log(name, age)
   return (
     <div>
-      <p>Hello {props.name}, you are {props.age} years old </p>
+      <p>Hello {name}, you are {age} years old </p>
+      <p>So you vere probably born in {bornYear()}</p>
     </div>
   )
 }
