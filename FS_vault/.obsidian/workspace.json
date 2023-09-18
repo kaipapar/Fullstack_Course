@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1/c Komponentin tila ja tapahtumankäsittely.md",
+                "file": "1/a Reactin alkeet.md",
                 "mode": "source",
                 "source": false
               }
@@ -82,8 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "ecb221d066c86384",
@@ -99,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1/c Komponentin tila ja tapahtumankäsittely.md",
+                "file": "1/a Reactin alkeet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1/c Komponentin tila ja tapahtumankäsittely.md",
+                "file": "1/a Reactin alkeet.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1/c Komponentin tila ja tapahtumankäsittely.md"
+                "file": "1/a Reactin alkeet.md"
               }
             }
           },
@@ -172,10 +171,10 @@
   },
   "active": "5be28d5135524b6a",
   "lastOpenFiles": [
+    "1/c Komponentin tila ja tapahtumankäsittely.md",
     "1/b JavaScriptiä.md",
     "1/a Reactin alkeet.md",
     "1/d Monimutkaisempi tila, Reactin debuggaus.md",
-    "1/c Komponentin tila ja tapahtumankäsittely.md",
     "2023-09-05.md",
     "().md",
     "0/CSS basics.md",
