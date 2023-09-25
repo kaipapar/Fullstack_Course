@@ -30,9 +30,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "4307da49f79ffac7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "a Kokoelmien renderöinti ja moduulit.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1/a Reactin alkeet.md",
+                "file": "a Kokoelmien renderöinti ja moduulit.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1/a Reactin alkeet.md",
+                "file": "a Kokoelmien renderöinti ja moduulit.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1/a Reactin alkeet.md"
+                "file": "a Kokoelmien renderöinti ja moduulit.md"
               }
             }
           },
@@ -169,11 +181,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5be28d5135524b6a",
+  "active": "4307da49f79ffac7",
   "lastOpenFiles": [
+    "1/a Reactin alkeet.md",
+    "a Kokoelmien renderöinti ja moduulit.md",
+    "2",
     "1/c Komponentin tila ja tapahtumankäsittely.md",
     "1/b JavaScriptiä.md",
-    "1/a Reactin alkeet.md",
     "1/d Monimutkaisempi tila, Reactin debuggaus.md",
     "2023-09-05.md",
     "().md",
