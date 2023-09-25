@@ -41,17 +41,14 @@ const Content = ({parts}) => {
       
     </div>
   )
-}/*
-<Part part={props.parts[0].name} exercises={props.parts[0].exercises} />
-      <Part part={props.parts[1].name} exercises={props.parts[1].exercises} />
-      <Part part={props.parts[2].name} exercises={props.parts[2].exercises} />*/
+}
 const Total = (props) => {
+  const initialValue = 0
+  const total = props.parts.reduce((accumulator, part) => accumulator + part.exercises, initialValue)
   return (
     <div>
       <p>
-        The total amount of exercises done was: {props.parts[0].exercises 
-                                                +props.parts[1].exercises+
-                                                props.parts[2].exercises}
+        The total amount of exercises done was: {total}
       </p>
     </div>
   )
