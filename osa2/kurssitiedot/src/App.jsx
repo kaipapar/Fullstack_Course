@@ -16,9 +16,6 @@ const Course = ({course}) => {
   </div>
   )
 }
-/*      <Content parts={course.parts}/>
-      <Total parts={course.parts}/>*/
-
 
 const Header = (props) => {
   return (
@@ -27,24 +24,27 @@ const Header = (props) => {
     </div>
   )
 }
-const Part = (props) => (
+const Part = ({content}) => (
   <div>
-  <p>
-    For this part: {props.part} Exercise count is:{props.exercises}
-  </p>
+  <li>For this part: {content.id} Exercise count is: {content.exercises}</li>
 </div>
 )
 
-const Content = (props) => {
+
+const Content = ({parts}) => {
+  console.log(parts)
   return (
     <div>
-      <Part part={props.parts[0].name} exercises={props.parts[0].exercises} />
-      <Part part={props.parts[1].name} exercises={props.parts[1].exercises} />
-      <Part part={props.parts[2].name} exercises={props.parts[2].exercises} />
+      <ul>
+        {parts.map(part => <Part key={part.id} content={part}/>)}
+      </ul>
+      
     </div>
   )
-}
-
+}/*
+<Part part={props.parts[0].name} exercises={props.parts[0].exercises} />
+      <Part part={props.parts[1].name} exercises={props.parts[1].exercises} />
+      <Part part={props.parts[2].name} exercises={props.parts[2].exercises} />*/
 const Total = (props) => {
   return (
     <div>
