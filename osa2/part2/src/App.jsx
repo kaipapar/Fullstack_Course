@@ -1,9 +1,10 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Note from './components/Note'
+import axios from 'axios'
 
 const App = (props) => {
   //const { notes } = props
-  const [notes, setNotes] = useState(props.notes)
+  const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')  //'a new note...' // default teksti formissa
   const [showAll, setShowAll] = useState(true)
 
@@ -21,6 +22,20 @@ const App = (props) => {
     setNotes(notes.concat(noteObject))
     setNewNote('')
   }
+
+  const hook = () => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/notes')
+      .then(response => {
+        console.log('promise fulfilled')
+        setNotes(response.data)
+      })
+  }
+  
+  useEffect(hook, [])
+  console.log('render', notes.length, 'notes')
+
 
   const handleNoteChange = (event) => {
     console.log(event.target.value)
