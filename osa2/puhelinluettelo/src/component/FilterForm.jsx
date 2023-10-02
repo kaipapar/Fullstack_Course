@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const FilterForm = ({ onFilterChange, handler, value}) => {
+const FilterForm = ({handler, value}) => {
+  console.log('filterForm executed: handler, value', handler, value)
   return (
     <form>
       <input

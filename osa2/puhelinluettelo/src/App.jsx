@@ -3,6 +3,7 @@ import axios from 'axios'
 import FilterForm from './component/FilterForm'
 import NewPerson from './component/NewPersonForm'
 import RenderAll from './component/RenderAll'
+import personService from './services/persons'
 
 const App = () => {
 
@@ -14,16 +15,15 @@ const App = () => {
   const [filteredData, setFilteredData] = useState(persons)
   const [newFilter, setNewFilter] = useState('')
 
-  const hook = () => {
-    console.log('effect')
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        console.log('promise fulfilled')
-        setFilteredData(response.data)
+  useEffect( () => {
+      personService 
+      .getAll()
+      .then(initialPersons => {
+        setPersons(initialPersons)
       })
-  }
-  useEffect(hook, [])
+      console.log('effect')
+    }, [])
+  
   console.log('render', persons.length, 'notes')
 
 
@@ -31,43 +31,70 @@ const App = () => {
     event.preventDefault()
     console.log('button clicked', event.target)
     const personObject = {name: newName, number: newNumber}
-    console.log(persons.indexOf(personObject.name))
-    if (persons.some(person => person.name === personObject.name))
+    console.log('index of p',persons.indexOf(personObject))
+    if (persons.some(person => person.name === personObject.name && person.number.toString() !== personObject.number.toString())){
+      if (window.confirm(`Would you like to update the number?`)){
+        const matchingPerson = persons.find(person => person.name === personObject.name)
+        console.log('id', matchingPerson.id)
+
+        updateNumber(matchingPerson.id, personObject)
+        console.log('number updated')
+      }
+    }else if (persons.some(person => person.name === personObject.name && person.number.toString() === personObject.number.toString())){
       window.alert(`${newName} is already added to phonebook`)
-    else
-      setPersons(persons.concat(personObject))
-      setFilteredData(persons.concat(personObject))
+      console.log('person not updated nor added')
+    }else{
+      console.log('creating new person')
+      personService
+      .create(personObject)
+      .then(returnedPerson => {
+        setPersons(persons.concat(returnedPerson))  //concat the new addition to the list of people
+      })
+    }      
+    setFilteredData(persons)
 
     setNewName('')
     setNewNumber('')
   }
 
-  const filterResult = (filterValue) => {
-    setFilteredData(persons.filter(item => 
-      item.name.toLocaleLowerCase().includes(filterValue.toLowerCase())))
+  const delPerson = (id) => {
+    personService.del(id)
+    personService.getAll().then(updated => {setPersons(updated)})
+  }
+
+  const updateNumber = (id, newObject) => {
+    console.log('updating!',id)
+    personService
+      .update(id, newObject)
+      .then(returnedPerson => {
+        setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
+      })
   }
 
   // tapahtumankäsittelijät
   const handleNameChange = (event) => {
-    console.log(event.target.value)
+    console.log('namechange',event.target.value)
     setNewName(event.target.value)
   }
   const handleNumberChange = (event) => {
-    console.log(event.target.value)
+    console.log('numberchange',event.target.value)
     setNewNumber(event.target.value)
   }
   const handleFilterChange = (event) => {
-    console.log(event.target.value)
+    console.log('filter event', event.target.value)
     setNewFilter(event.target.value)
-    filterResult(event.target.value) // Pass the filter value to a parent component or a callback function
+    setFilteredData(persons) // reset filter
+    console.log('tofilteredData',filteredData)    
+    setFilteredData(filteredData.filter(item => // 
+      item.name.toLocaleLowerCase().includes(event.target.value.toLowerCase())))
+    console.log('filteredData',filteredData)    
   };
 
   return (
     <div>
       <h2>Phonebook</h2>
-      <FilterForm onFilterChange={filterResult} 
-                handler={handleFilterChange} 
-                value={newFilter}/>
+      <FilterForm handler={handleFilterChange} 
+                  value={newFilter}/>
       <h2>add a new</h2>
       <NewPerson newName= {newName} 
                   newNumber={newNumber} 
@@ -75,7 +102,8 @@ const App = () => {
                   handleNumberChange={handleNumberChange}
                   addName={addName}/>
       <h2>Numbers</h2>
-      <RenderAll toRender={filteredData}/>
+      <RenderAll toRender={filteredData} 
+                  delPerson={delPerson}/>
 
     </div>
   )
