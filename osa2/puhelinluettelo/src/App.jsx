@@ -4,6 +4,7 @@ import FilterForm from './component/FilterForm'
 import NewPerson from './component/NewPersonForm'
 import RenderAll from './component/RenderAll'
 import personService from './services/persons'
+import Notification from './component/Notification'
 
 const App = () => {
 
@@ -14,6 +15,8 @@ const App = () => {
   // Filtering
   const [filteredData, setFilteredData] = useState(persons)
   const [newFilter, setNewFilter] = useState('')
+
+  const [notification, setNotification] = useState(null)
 
   useEffect( () => {
       personService 
@@ -39,12 +42,15 @@ const App = () => {
 
         updateNumber(matchingPerson.id, personObject)
         console.log('number updated')
+        notif('Number updated')
+
       }
     }else if (persons.some(person => person.name === personObject.name && person.number.toString() === personObject.number.toString())){
       window.alert(`${newName} is already added to phonebook`)
       console.log('person not updated nor added')
     }else{
       console.log('creating new person')
+      notif('New Person created')
       personService
       .create(personObject)
       .then(returnedPerson => {
@@ -60,6 +66,7 @@ const App = () => {
   const delPerson = (id) => {
     personService.del(id)
     personService.getAll().then(updated => {setPersons(updated)})
+    notif('Person deleted')
   }
 
   const updateNumber = (id, newObject) => {
@@ -90,9 +97,16 @@ const App = () => {
     console.log('filteredData',filteredData)    
   };
 
+  const notif = (message) => {
+    setNotification(`${message}`)
+    setTimeout(() => {
+      setNotification(null)
+    }, 5000)
+  }
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={notification} />
       <FilterForm handler={handleFilterChange} 
                   value={newFilter}/>
       <h2>add a new</h2>
