@@ -1,8 +1,30 @@
 //const http = require('http')
 
 const express = require('express')
+const morgan = require('morgan')
+const cors = require('cors')
 const app = express()
+
+app.use(cors()) //middle
+morgan.token('req-body', (req, res) => {
+  if (req.method === 'POST' || req.method === 'PUT') {
+    return JSON.stringify(req.body)
+  }
+  return '-'
+
+
+});
+app.use(morgan(':method :url :status :res[content-length] :req-body - :response-time ms'))
+app.use(express.static('dist'))
 app.use(express.json())
+const requestLogger = (request, response, next) => {
+  console.log('Method:', request.method)
+  console.log('Path:  ', request.path)
+  console.log('Body:  ', request.body)
+  console.log('---')
+  next()
+}
+app.use(requestLogger)
 
 let notes = [
   {
@@ -74,7 +96,14 @@ app.post('/api/notes', (request, response) => {
   response.json(note)
 })
 
-const PORT = 3001
+
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' })
+}
+
+app.use(unknownEndpoint)
+
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
