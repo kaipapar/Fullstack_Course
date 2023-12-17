@@ -1,9 +1,17 @@
 //const http = require('http')
-
+const Note = require('./models/note')
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const app = express()
+const mongoose = require('mongoose')
+
+/*const password = process.argv[2]
+const url =
+  `mongodb+srv://karrikorsu:${password}@cluster0.ziu0hry.mongodb.net/?retryWrites=true&w=majority`
+*/
+
+const Note = mongoose.model('Note', noteSchema)
 
 app.use(cors()) //middle
 morgan.token('req-body', (req, res) => {
@@ -49,7 +57,9 @@ app.get('/', (req, res) => {
   })
   
 app.get('/api/notes', (req, res) => {
-  res.json(notes)
+  Note.find({}).then(notes => {
+    response.json(notes)
+  })
 })
 
 app.get('/api/notes/:id', (request, response) => {
