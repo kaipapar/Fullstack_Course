@@ -28,6 +28,4 @@ noteSchema.set('toJSON', {
     delete returnedObject.__v
   }
 })
-
-
 module.exports = mongoose.model('Note', noteSchema)

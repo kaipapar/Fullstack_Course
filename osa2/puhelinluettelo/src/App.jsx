@@ -13,7 +13,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
 
   // Filtering
-  const [filteredData, setFilteredData] = useState(persons)
+  const [filteredData, setFilteredData] = useState('')
   const [newFilter, setNewFilter] = useState('')
 
   const [notification, setNotification] = useState(null)
